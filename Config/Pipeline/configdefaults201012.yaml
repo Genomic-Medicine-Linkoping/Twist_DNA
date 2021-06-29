@@ -19,8 +19,8 @@ cnvkit:
   relevant_genes: "DATA/TSO500_relevant_genes.txt"
 
 reference: #change to hg38
-    ref: "/data/ref_genomes/hg19/bwa/BWA_0.7.10_refseq/hg19.with.mt.fasta"
-    dict: "/data/ref_genomes/hg19/bwa/BWA_0.7.10_refseq/hg19.with.mt.dict"
+    ref: "/home/rada/Documents/CGL/Twist_DNA/hg19/genome.fa"
+    dict: "/home/rada/Documents/CGL/Twist_DNA/hg19/genome.dict"
     assembly: hg19
     chrom_len:
        chr1: 249250621
