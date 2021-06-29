@@ -3,3 +3,7 @@ venv
 .idea
 .snakemake
 __pycache__
+
+VEP/homo_sapiens_refseq
+AWS/GRCh37
+SOBDetector_v1.0.1.jar
