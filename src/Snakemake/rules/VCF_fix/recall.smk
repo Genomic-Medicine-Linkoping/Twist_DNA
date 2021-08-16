@@ -21,12 +21,15 @@ rule recall:
     params:
         support="1",  #"{support}" ,
         order=sort_order,
+        bcbio_singularity=config["singularity"]["execute"] + config["singularity"].get(
+            "ensemble", config["singularity"].get("default", "")
+        )
     log:
         "logs/variantCalling/recall/{sample}.log",
-    container:
-        config["singularity"].get("ensemble", config["singularity"].get("default", ""))
     shell:
-        "(bcbio-variation-recall ensemble -n {params.support} --names {params.order} {output.vcf} {input.ref} {input.vcfs}) &> {log}"
+        """
+        {params.bcbio_singularity} bcbio-variation-recall ensemble -c 50 -n {params.support} --names {params.order} {output.vcf} {input.ref} {input.vcfs} &> {log}
+        """
 
 
 rule sort_recall:
