@@ -6,8 +6,7 @@ CONDA_ACTIVATE = source $$(conda info --base)/etc/profile.d/conda.sh ; conda act
 
 all:
 	@($(CONDA_ACTIVATE) ; \
-	snakemake --cores 10 --use-singularity --singularity-args "--bind /home/rada/ " -s /home/rada/Documents/CGL/Twist_DNA/Twist_DNA.smk)
-
+	snakemake --cores 50 --use-singularity --singularity-args "--bind /home/rada/ " -s /home/rada/Documents/CGL/Twist_DNA/Twist_DNA.smk)
 
 create_yaml:
 	@($(CONDA_ACTIVATE) ; \
