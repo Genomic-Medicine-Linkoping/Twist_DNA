@@ -81,9 +81,10 @@ java:
     SOBDetector: "/home/rada/Documents/CGL/Twist_DNA/SOBDetector_v1.0.1.jar"
 
 singularity:
-    #default: "docker://gmsuppsala/somatic:develop"
+    default: "docker://gmsuppsala/somatic:develop"
     #default: "Twist_DNA.sif"
-    default: "container/2021-08-16_Twist_DNA_default.sif"
+    #default: "container/2021-08-16_Twist_DNA_default.sif"
+    #default: "container/Massi_default.simg"
     execute: "singularity exec -e -B /home/rada/ "
     gatk4_cnv: "docker://broadinstitute/gatk:4.1.9.0"
     vep: "docker://ensemblorg/ensembl-vep:release_99.0"
