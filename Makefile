@@ -1,5 +1,6 @@
 SHELL = /bin/bash
 
+# The conda env definition file "env.yml" is located in the project's root directory
 CURRENT_CONDA_ENV_NAME = Twist_DNA
 # Note that the extra activate is needed to ensure that the activate floats env to the front of PATH
 CONDA_ACTIVATE = source $$(conda info --base)/etc/profile.d/conda.sh ; conda activate ; conda activate $(CURRENT_CONDA_ENV_NAME)
