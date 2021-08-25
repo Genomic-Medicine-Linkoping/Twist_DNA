@@ -7,6 +7,7 @@ CONDA_ACTIVATE = source $$(conda info --base)/etc/profile.d/conda.sh ; conda act
 
 all:
 	@($(CONDA_ACTIVATE) ; \
+	export SINGULARITY_LOCALCACHEDIR=/home/rada/Documents/CGL/Twist_DNA/singularity_cache ; \
 	snakemake --cores 80 --use-singularity --singularity-args "--bind /home/rada/ " -s /home/rada/Documents/CGL/Twist_DNA/Twist_DNA.smk --forceall $(ARGS))
 
 create_yaml:
