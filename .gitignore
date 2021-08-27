@@ -10,6 +10,8 @@ AWS/GRCh37
 SOBDetector_v1.0.1.jar
 fastq_temp/*
 hg19/*
-RunParameters.xml
-Twist_DNA.sif
-trash/*
+
+# Ignore singularity cache directory
+singularity_cache/*
+!singularity_cache/README.md
+
