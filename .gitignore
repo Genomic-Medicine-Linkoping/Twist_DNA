@@ -15,3 +15,5 @@ hg19/*
 singularity_cache/*
 !singularity_cache/README.md
 
+# Ignore contents of temp directory
+temp
