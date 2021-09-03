@@ -8,17 +8,26 @@ output_tmb = open(snakemake.output.tmb, "w")
 
 
 FFPE_SNV_artifacts = {}
-next(artifacts)
+header = True
+vardict_index = 10000
 for line in artifacts:
     lline = line.strip().split("\t")
+    if header:
+        i = 0
+        for column in lline:
+            if column == "vardict":
+                vardict_index = i
+            i += 1
+        header = False
+        continue
     chrom = lline[0]
     pos = lline[1]
     key = chrom + "_" + pos
     type = lline[2]
     if type != "SNV":
         continue
-    observations = int(lline[3])
-    FFPE_SNV_artifacts[key] = observations
+    vadict_observations = int(lline[vardict_index])
+    FFPE_SNV_artifacts[key] = vadict_observations
 
 
 '''Background'''
@@ -132,9 +141,8 @@ for line in vcf:
         continue
 
     # TMB
-    if (filter.find("PASS") != -1 and DP > 200 and VD > 20 and AF >= 0.05 and AF <= 0.40 and
-            GnomAD <= 0.0001 and db1000G <= 0.0001 and Observations <= 1 and INFO.find("MUC6") == -1 and
-            INFO.find("Complex") == -1):
+    if (filter.find("PASS") != -1 and DP > 200 and VD > 10 and AF >= 0.02 and AF <= 0.45 and
+            GnomAD <= 0.0001 and db1000G <= 0.0001 and Observations <= 1 and INFO.find("Complex") == -1):
         if len(ref) == 1 and len(alt) == 1:
             panel_median = 1000
             panel_sd = 1000
@@ -158,8 +166,8 @@ for line in vcf:
                     nr_sSNV_TMB += 1
                     TMB_sSNV.append([line, panel_median, panel_sd, run_median, AF, pos_sd])
 
-nsTMB = nr_nsSNV_TMB * 1.0
-total_TMB = (nr_sSNV_TMB + nr_nsSNV_TMB) * 0.8
+nsTMB = nr_nsSNV_TMB * 0.86
+total_TMB = (nr_sSNV_TMB + nr_nsSNV_TMB) * 0.70
 output_tmb.write("nsSNV TMB:\t" + str(nsTMB) + "\n")
 output_tmb.write("nsSNV variants:\t" + str(nr_nsSNV_TMB) + "\n")
 output_tmb.write("TMB:\t" + str(total_TMB) + "\n")
