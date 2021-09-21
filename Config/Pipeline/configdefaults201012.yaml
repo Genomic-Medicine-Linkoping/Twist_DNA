@@ -80,6 +80,9 @@ geneFuse:
 TMB:
     Artifacts: "DATA/Artifact_positions.txt"
 
+mutect2:
+    GetPileupSummaries: "DATA/chr17_small_exac_common_3.vcf.gz"
+
 java:
     SOBDetector: "/home/rada/Documents/CGL/Twist_DNA/SOBDetector_v1.0.1.jar"
 
