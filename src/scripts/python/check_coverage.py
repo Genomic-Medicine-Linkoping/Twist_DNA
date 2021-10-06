@@ -12,12 +12,14 @@ gvcf = snakemake.input.gvcf
 outfile = open(snakemake.output.coverage, "w")
 outfile2 = open(snakemake.output.coverage2, "w")
 
-header = "#Chr\tStart_hg19\tEnd_hg19\tGene\tCDS_mut_syntax\tAA_mut_syntax\tReport\tcomment\tExon\tAccession_number"
-header += "\tpanel_median\tpanel_sd\trun_median\talt_AF\tSD_from_median"
-header += "\tCoverage\tPosition\tDP\tRef_DP\tAlt_DP\tAF\tAA_change\tCDS_change\n"
+header1 = "#Chr\tStart_hg19\tEnd_hg19\tGene\tCDS_mut_syntax\tAA_mut_syntax\tReport\tcomment\tExon\tAccession_number"
+header1 += "\tCoverage\tPosition"
+header2 = header1
+header2 += "\tpanel_median\tpanel_sd\trun_median\talt_AF\tSD_from_median"
+header2 += "\tDP\tRef_DP\tAlt_DP\tAF\tAA_change\tCDS_change\n"
 
-outfile.write(header)
-outfile2.write(header)
+outfile.write(header1 + "\n")
+outfile2.write(header2)
 
 
 '''Find positions to report and gene regions to analyse'''
@@ -57,24 +59,14 @@ for line in bed:
         first_gene = False
         continue
     if prev_gene != gene:
-        gene_regions.append([int(prev_chrom), "chr" + prev_chrom + ":" + gene_start_pos + "-" + gene_end_pos])
+        gene_regions.append("chr" + prev_chrom + ":" + gene_start_pos + "-" + gene_end_pos)
         prev_gene = gene
         prev_chrom = chrom
         gene_start_pos = start_pos
         gene_end_pos = end_pos
     else:
         gene_end_pos = end_pos
-gene_regions.append([int(chrom), "chr" + chrom + ":" + gene_start_pos + "-" + gene_end_pos])
-
-
-'''Remove identical regions'''
-gene_regions.sort()
-gene_regions_temp = []
-for gene_region in gene_regions:
-    gene_region = gene_region[1]
-    if gene_region not in gene_regions_temp:
-        gene_regions_temp.append(gene_region)
-gene_regions = gene_regions_temp
+gene_regions.append("chr" + chrom + ":" + gene_start_pos + "-" + gene_end_pos)
 
 
 '''find all calls in the vcf overlapping hotspots'''
