@@ -11,10 +11,13 @@ CURRENT_CONDA_ENV_NAME = Twist_DNA
 # Note that the extra activate is needed to ensure that the activate floats env to the front of PATH
 CONDA_ACTIVATE = source $$(conda info --base)/etc/profile.d/conda.sh ; conda activate ; conda activate $(CURRENT_CONDA_ENV_NAME)
 
+CPUS = 6
+ARGS = --forceall
+
 all:
 	@($(CONDA_ACTIVATE) ; \
 	export SINGULARITY_LOCALCACHEDIR=/home/rada/Documents/CGL/Twist_DNA/singularity_cache ; \
-	snakemake --cores 20 --use-singularity --singularity-args "--bind /home/rada/ " -s /home/rada/Documents/CGL/Twist_DNA/Twist_DNA.smk --forceall $(ARGS))
+	snakemake --cores $(CPUS) --use-singularity --singularity-args "--bind /home/rada/ " -s /home/rada/Documents/CGL/Twist_DNA/Twist_DNA.smk $(ARGS))
 
 create_yaml:
 	@($(CONDA_ACTIVATE) ; \
