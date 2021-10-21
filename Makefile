@@ -1,4 +1,10 @@
 SHELL = /bin/bash
+.ONESHELL:
+#.SHELLFLAGS := -eu -o pipefail -c
+.SHELLFLAGS := -e -o pipefail -c
+.DELETE_ON_ERROR:
+MAKEFLAGS += --warn-undefined-variables
+MAKEFLAGS += --no-builtin-rules
 
 # The conda env definition file "env.yml" is located in the project's root directory
 CURRENT_CONDA_ENV_NAME = Twist_DNA
