@@ -14,6 +14,11 @@ CONDA_ACTIVATE = source $$(conda info --base)/etc/profile.d/conda.sh ; conda act
 CPUS = 6
 ARGS = --forceall
 
+.PHONY: run, \
+config, \
+pull_default_sif, \
+clean
+
 
 run:
 	@($(CONDA_ACTIVATE) ; \
