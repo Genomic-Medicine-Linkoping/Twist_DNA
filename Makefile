@@ -14,12 +14,13 @@ CONDA_ACTIVATE = source $$(conda info --base)/etc/profile.d/conda.sh ; conda act
 CPUS = 6
 ARGS = --forceall
 
-all:
+
+run:
 	@($(CONDA_ACTIVATE) ; \
 	export SINGULARITY_LOCALCACHEDIR=/home/rada/Documents/CGL/Twist_DNA/singularity_cache ; \
 	snakemake --cores $(CPUS) --use-singularity --singularity-args "--bind /home/rada/ " -s /home/rada/Documents/CGL/Twist_DNA/Twist_DNA.smk $(ARGS))
 
-create_yaml:
+config:
 	@($(CONDA_ACTIVATE) ; \
 	snakemake -p -j 1 -s /home/rada/Documents/CGL/Twist_DNA/src/Snakemake/rules/Twist_DNA_yaml/Twist_DNA_yaml.smk)
 
