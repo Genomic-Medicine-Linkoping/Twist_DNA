@@ -28,20 +28,20 @@ pull_default_sif:
 	singularity pull Twist_DNA.sif docker://gmsuppsala/somatic:develop
 
 clean:
-	@rm -rf alignment
-	@rm -rf Bam
-	@rm -rf benchmarks
-	@rm -rf CNV
-	@rm -f DATA/gene_depth_PVAL-*-ready.txt
-	@rm -f genefuse.json
-	@rm -rf fastq
-	@rm -rf freebayes
-	@rm -rf logs
-	@rm -rf MSI
-	@rm -rf mutect2
-	@rm -rf qc
-	@rm -rf recall
-	@rm -rf Results
-	@rm -rf vardict
-	@rm -rf varscan
+	@rm -rf alignment ; \
+	Bam ; \
+	benchmarks ; \
+	CNV ; \
+	DATA/gene_depth_PVAL-*-ready.txt ; \
+	genefuse.json ; \
+	fastq ; \
+	freebayes ; \
+	logs ; \
+	MSI ; \
+	mutect2 ; \
+	qc ; \
+	recall ; \
+	Results ; \
+	vardict ; \
+	varscan
 	
