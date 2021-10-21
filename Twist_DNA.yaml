@@ -48,6 +48,9 @@ reference: #change to hg38
        chrX: 155270560
        chrY: 59373566
 
+Background:
+    background_panel: "/projects/wp1/nobackup/ngs/utveckling/Twist_DNA_DATA/Background/background_panel.tsv"
+
 PoN:
     cnvkit: "DATA/cnvkit_Twist_PoN.cnn"
     #ONCOCNV: "DATA/ONCOCNV_Twist_PoN.txt"
@@ -62,9 +65,6 @@ configfiles:
 
 cnvkit:
     relevant_genes: "DATA/TSO500_relevant_genes.txt"
-
-#Background:
-#    background_panel: "/projects/wp1/nobackup/ngs/utveckling/Twist_DNA_DATA/Background/background_panel.tsv"
 
 bed:
     bedfile: "DATA/pool1_pool2_nochr_3c.sort.merged.padded20.hg19.210311.met.annotated.bed" #Change to HG38 coordiantes
