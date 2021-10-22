@@ -11,7 +11,7 @@ CURRENT_CONDA_ENV_NAME = Twist_DNA
 # Note that the extra activate is needed to ensure that the activate floats env to the front of PATH
 CONDA_ACTIVATE = source $$(conda info --base)/etc/profile.d/conda.sh ; conda activate ; conda activate $(CURRENT_CONDA_ENV_NAME)
 
-CPUS = 6
+CPUS = 86
 ARGS = --forceall
 
 .PHONY: run, \
