@@ -22,3 +22,6 @@ temp
 
 # Ignore run-created files
 DATA/gene_depth_PVAL-*-ready.txt
+
+# Ignore Background panel
+DATA/background_panel.tsv
