@@ -17,31 +17,20 @@ ARGS = --forceall
 .PHONY: run, \
 config, \
 pull_default_sif, \
-clean
+clean, \
+report, \
+collect_res, \
+archive, \
+help
 
+REPORT = report.html
 
-run:
-	@($(CONDA_ACTIVATE) ; \
-	export SINGULARITY_LOCALCACHEDIR=/home/rada/Documents/CGL/Twist_DNA/singularity_cache ; \
-	snakemake --cores $(CPUS) --use-singularity --singularity-args "--bind /home/rada/ " -s /home/rada/Documents/CGL/Twist_DNA/Twist_DNA.smk $(ARGS))
-
-config:
-	@($(CONDA_ACTIVATE) ; \
-	snakemake -p -j 1 -s /home/rada/Documents/CGL/Twist_DNA/src/Snakemake/rules/Twist_DNA_yaml/Twist_DNA_yaml.smk $(ARGS))
-
-pull_default_sif:
-	singularity pull Twist_DNA.sif docker://gmsuppsala/somatic:develop
-
-report:
-	@($(CONDA_ACTIVATE); \
-	snakemake -j 1 --report report.html -s ./Twist_DNA.smk)
-
-clean:
-	@rm -rf alignment \
+RESULTS = alignment \
 	Bam \
 	benchmarks \
 	CNV \
 	DATA/gene_depth_PVAL-*-ready.txt \
+	DATA/background_run.tsv \
 	genefuse.json \
 	fastq \
 	freebayes \
@@ -52,5 +41,48 @@ clean:
 	recall \
 	Results \
 	vardict \
-	varscan
-	
+	varscan \
+	$(REPORT)
+
+RESULTS_DIR = 01_results
+
+STORAGE = /data/CGL/Twist_DNA/
+
+## run: Run the main pipeline
+run:
+	@($(CONDA_ACTIVATE) ; \
+	export SINGULARITY_LOCALCACHEDIR=/home/rada/Documents/CGL/Twist_DNA/singularity_cache ; \
+	snakemake --cores $(CPUS) --use-singularity --singularity-args "--bind /home/rada/ " -s /home/rada/Documents/CGL/Twist_DNA/Twist_DNA.smk $(ARGS))
+
+## config: Make the main config file (usually run before running the main pipeline)
+config:
+	@($(CONDA_ACTIVATE) ; \
+	snakemake -p -j 1 -s /home/rada/Documents/CGL/Twist_DNA/src/Snakemake/rules/Twist_DNA_yaml/Twist_DNA_yaml.smk $(ARGS))
+
+## pull_default_sif: Pull the default singularity image
+pull_default_sif:
+	singularity pull Twist_DNA.sif docker://gmsuppsala/somatic:develop
+
+## report: Make snakemake report
+report:
+	@($(CONDA_ACTIVATE); \
+	snakemake -j 1 --report $(REPORT) -s ./Twist_DNA.smk)
+
+## collect_res: Collect all results from the last run into own directory
+collect_res:
+	mkdir -p $(RESULTS_DIR) ; \
+	mv $(RESULTS) $(RESULTS_DIR)
+
+# clean: Remove all the latest results
+clean:
+	@rm -rf $(RESULTS)
+
+## archive: Move to larger storage location and create a symbolic link to it
+archive:
+	mv $(RESULTS_DIR) $(STORAGE) && \
+	ln -s $(STORAGE)$(RESULTS_DIR) $$PWD
+
+## help: Show this message
+help:
+	@grep '^##' ./Makefile
+
