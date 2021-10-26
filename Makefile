@@ -32,6 +32,10 @@ config:
 pull_default_sif:
 	singularity pull Twist_DNA.sif docker://gmsuppsala/somatic:develop
 
+report:
+	@($(CONDA_ACTIVATE); \
+	snakemake -j 1 --report report.html -s ./Twist_DNA.smk)
+
 clean:
 	@rm -rf alignment \
 	Bam \
