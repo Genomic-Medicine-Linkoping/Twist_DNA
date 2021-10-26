@@ -27,7 +27,7 @@ run:
 
 config:
 	@($(CONDA_ACTIVATE) ; \
-	snakemake -p -j 1 -s /home/rada/Documents/CGL/Twist_DNA/src/Snakemake/rules/Twist_DNA_yaml/Twist_DNA_yaml.smk)
+	snakemake -p -j 1 -s /home/rada/Documents/CGL/Twist_DNA/src/Snakemake/rules/Twist_DNA_yaml/Twist_DNA_yaml.smk $(ARGS))
 
 pull_default_sif:
 	singularity pull Twist_DNA.sif docker://gmsuppsala/somatic:develop
