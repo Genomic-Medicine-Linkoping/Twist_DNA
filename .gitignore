@@ -25,3 +25,8 @@ DATA/gene_depth_PVAL-*-ready.txt
 
 # Ignore Background panel
 DATA/background_panel.tsv
+
+# Ignore results directories
+0*_results
+
+.java
