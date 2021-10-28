@@ -44,7 +44,7 @@ RESULTS = alignment \
 	varscan \
 	$(REPORT)
 
-RESULTS_DIR = 01_results
+RESULTS_DIR = 02_results
 
 STORAGE = /data/CGL/Twist_DNA/
 
