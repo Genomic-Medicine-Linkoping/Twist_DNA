@@ -26,7 +26,18 @@ DATA/gene_depth_PVAL-*-ready.txt
 # Ignore Background panel
 DATA/background_panel.tsv
 
-# Ignore results directories
+# Ignore results
 0*_results
+fastq
+logs
+mutect2
+CNV
+alignment
+benchmarks
+qc
+Results
+genefuse.json
+Bam
+
 
 .java
