@@ -13,13 +13,13 @@ CONDA_ACTIVATE = source $$(conda info --base)/etc/profile.d/conda.sh ; conda act
 CPUS = 86
 ARGS = --forceall
 
-.PHONY: run, \
-config, \
-pull_default_sif, \
-clean, \
-report, \
-collect_res, \
-archive, \
+.PHONY: run \
+config \
+pull_default_sif \
+clean \
+report \
+collect_res \
+archive \
 help
 
 REPORT = report.html
