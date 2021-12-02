@@ -19,8 +19,8 @@ cnvkit:
   relevant_genes: "DATA/TSO500_relevant_genes.txt"
 
 reference: #change to hg38
-    ref: "/home/rada/Documents/CGL/Twist_DNA/hg19/genome.fa"
-    dict: "/home/rada/Documents/CGL/Twist_DNA/hg19/genome.dict"
+    ref: "/data/Twist_DNA/hg19/genome.fa"
+    dict: "/data/Twist_DNA/hg19/genome.dict"
     assembly: hg19
     chrom_len:
        chr1: 249250621
@@ -49,19 +49,16 @@ reference: #change to hg38
        chrY: 59373566
 
 Background:
-    background_panel: "/home/rada/Documents/CGL/Twist_DNA/DATA/background_panel.tsv"
+    background_panel: "/data/Twist_DNA/background_panel.tsv"
 
 PoN:
     cnvkit: "DATA/cnvkit_Twist_PoN.cnn"
-    #ONCOCNV: "DATA/ONCOCNV_Twist_PoN.txt"
-    #ONCOCNV2: "DATA/ONCOCNV_Twist_PoN.Processed.txt"
     GATK: "DATA/GATK_Twist_PoN.hdf5"
     msisensor-pro: "DATA/Msisensor_pro_reference.list_baseline"
 
 configfiles:
     multiqc: "Config/Pipeline/multiqc_config.yaml"
-    #vep: "/data/ref_genomes/VEP/"
-    vep: "/home/rada/Documents/CGL/Twist_DNA/VEP/"    
+    vep: "/data/Twist_DNA/VEP/"
 
 cnvkit:
     relevant_genes: "DATA/TSO500_relevant_genes.txt"
@@ -84,20 +81,19 @@ mutect2:
     GetPileupSummaries: "DATA/chr17_small_exac_common_3.vcf.gz"
 
 java:
-    SOBDetector: "/home/rada/Documents/CGL/Twist_DNA/SOBDetector_v1.0.1.jar"
+    SOBDetector: "/data/Twist_DNA/SOBDetector_v1.0.1.jar"
 
 singularity:
     default: "docker://gmsuppsala/somatic:develop"
-    execute: "singularity exec -e -B /home/rada "
+    execute: "singularity exec -e -B /home/lauri "
     gatk4_cnv: "docker://broadinstitute/gatk:4.1.9.0"
     vep: "docker://ensemblorg/ensembl-vep:release_99.0"
 
 cartool:
     cov: "100 200 1000"
-runfolder_path: "/home/rada/Documents/CGL/Twist_DNA"
-samplesheet: samplesheet.csv
+runfolder_path: "/home/lauri/Desktop/Twist_DNA"
+#samplesheet: samplesheet.csv
 bcl2fastq_version: 2.17.1.14
-
 
 samples: samples.tsv
 units: units.tsv
