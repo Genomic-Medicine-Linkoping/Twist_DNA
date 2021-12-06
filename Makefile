@@ -53,7 +53,7 @@ MAIN_SMK = /home/lauri/Desktop/Twist_DNA/Twist_DNA.smk
 run:
 	@($(CONDA_ACTIVATE)
 	export SINGULARITY_LOCALCACHEDIR=/home/lauri/Desktop/Twist_DNA/singularity_cache
-	snakemake --cores $(CPUS) --use-singularity --singularity-args "--bind /home/lauri/ " -s $(MAIN_SMK) $(ARGS))
+	snakemake --cores $(CPUS) --use-singularity --singularity-args "--bind /home/lauri/ --bind /data/" -s $(MAIN_SMK) $(ARGS))
 
 ## config: Make the main config file (usually run before running the main pipeline)
 config:
