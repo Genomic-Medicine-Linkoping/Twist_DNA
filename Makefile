@@ -28,7 +28,7 @@ RESULTS = alignment \
 	Bam \
 	benchmarks \
 	CNV \
-	DATA/gene_depth_PVAL-*-ready.txt \
+	DATA/gene_depth_*-ready.txt \
 	DATA/background_run.tsv \
 	genefuse.json \
 	fastq \
