@@ -87,14 +87,14 @@ java:
 
 singularity:
     default: "docker://gmsuppsala/somatic:develop"
-    execute: "singularity exec -e -B /home/lauri "
+    execute: "singularity exec -e -B /home/lauri -B /data/ "
     gatk4_cnv: "docker://broadinstitute/gatk:4.1.9.0"
     vep: "docker://ensemblorg/ensembl-vep:release_99.0"
 
 cartool:
     cov: "100 200 1000"
 runfolder_path: "/home/lauri/Desktop/Twist_DNA"
-#samplesheet: samplesheet.csv
+samplesheet: samplesheet.csv
 bcl2fastq_version: 2.17.1.14
 
 samples: samples.tsv
