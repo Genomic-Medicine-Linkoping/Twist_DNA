@@ -8,6 +8,8 @@ RunParameters.xml
 # Large files and references
 VEP/homo_sapiens_refseq
 VEP/homo_sapiens_refseq_vep_99_GRCh37.tar.gz
+VEP/homo_sapiens
+VEP/homo_sapiens_merged
 AWS/GRCh37
 SOBDetector_v1.0.1.jar
 fastq_temp/*
