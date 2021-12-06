@@ -74,9 +74,10 @@ collect_res:
 	mkdir -p $(RESULTS_DIR) ; \
 	mv $(RESULTS) $(RESULTS_DIR)
 
-# clean: Remove all the latest results
+## clean: Remove all the latest results
 clean:
-	@rm -rf $(RESULTS)
+	rm -rf $(RESULTS)
+
 
 ## archive: Move to larger storage location and create a symbolic link to it
 archive:
