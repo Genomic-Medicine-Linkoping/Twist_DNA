@@ -1,0 +1,102 @@
+
+move_umi: True
+
+programs:
+    Duplicates: "markduplicates" #fgbio / markduplicates
+    Trimming: "Fastp" #Cutadapt / Fastp / None
+    markduplicate: "picard" #GPU / picard /picard_UMI
+
+callers:
+  list:
+    - "mutect2"
+    - "vardict"
+    - "varscan"
+    - "freebayes"
+  sort_order: "mutect2,vardict,varscan,freebayes"
+
+cnvkit:
+  #extra: "--segment-method none"
+  relevant_genes: "DATA/TSO500_relevant_genes.txt"
+
+reference: #change to hg38
+    ref: "/data/Twist_DNA/BWA_0.7.10_refseq/hg19.with.mt.fasta"
+    dict: "/data/Twist_DNA/BWA_0.7.10_refseq/hg19.with.mt.dict"
+    assembly: hg19
+    chrom_len:
+       chr1: 249250621
+       chr2: 243199373
+       chr3: 198022430
+       chr4: 191154276
+       chr5: 180915260
+       chr6: 171115067
+       chr7: 159138663
+       chr8: 146364022
+       chr9: 141213431
+       chr10: 135534747
+       chr11: 135006516
+       chr12: 133851895
+       chr13: 115169878
+       chr14: 107349540
+       chr15: 102531392
+       chr16: 90354753
+       chr17: 81195210
+       chr18: 78077248
+       chr19: 59128983
+       chr20: 63025520
+       chr21: 48129895
+       chr22: 51304566
+       chrX: 155270560
+       chrY: 59373566
+
+Background:
+    background_panel: "/data/Twist_DNA/background_panel.tsv"
+
+PoN:
+    cnvkit: "DATA/cnvkit_Twist_PoN.cnn"
+    #ONCOCNV: "DATA/ONCOCNV_Twist_PoN.txt"
+    #ONCOCNV2: "DATA/ONCOCNV_Twist_PoN.Processed.txt"
+    GATK: "DATA/GATK_Twist_PoN.hdf5"
+    msisensor-pro: "DATA/Msisensor_pro_reference.list_baseline"
+
+configfiles:
+    multiqc: "Config/Pipeline/multiqc_config.yaml"
+    vep: "/home/lauri/Desktop/Twist_DNA/VEP/"
+
+cnvkit:
+    relevant_genes: "DATA/TSO500_relevant_genes.txt"
+
+bed:
+    bedfile: "DATA/pool1_pool2_nochr_3c.sort.merged.padded20.hg19.210311.met.annotated.bed" #Change to HG38 coordiantes
+    intervals: "DATA/pool1_pool2_nochr_3c.sort.merged.padded20.hg19.210311.met.annotated.interval_list"
+    GATK_CNV: "DATA/pool1_pool2_nochr_3c.sort.merged.hg19.210311.annotated.preprocessed.interval_list"
+    GATK_CNV_SNPs: "DATA/gnomad_SNP_0.001_target.annotated.interval_list"
+
+hotspot_combined: "DATA/Hotspots_combined.csv"
+
+geneFuse:
+    genes: "DATA/druggable.hg19.csv"
+
+TMB:
+    Artifacts: "DATA/Vardict_artifact_positions.txt"
+
+mutect2:
+    GetPileupSummaries: "DATA/chr17_small_exac_common_3.vcf.gz"
+
+java:
+    SOBDetector: "/data/Twist_DNA/SOBDetector_v1.0.1.jar"
+
+singularity:
+    default: "docker://gmsuppsala/somatic:develop"
+    execute: "singularity exec -e -B /data -B /projects -B /scratch -B /data_twist_dna_cutadapt "
+    gatk4_cnv: "docker://broadinstitute/gatk:4.1.9.0"
+    vep: "docker://ensemblorg/ensembl-vep:release_99.0"
+
+cartool:
+    cov: "100 200 1000"
+runfolder_path: home/lauri/Desktop/Twist_DNA
+samplesheet: /data/bcl2fastq/input/211203_NB501689_0228_AHV3GFBGXK/SampleSheet.csv
+bcl2fastq_version: 2.17.1.14
+
+
+samples: samples.tsv
+units: units.tsv
