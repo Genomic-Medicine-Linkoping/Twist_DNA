@@ -1,9 +1,9 @@
 sample	TC	platform
 LI-VAL-09	1	NextSeq
-LI-VAL-10	1	NextSeq
-LI-VAL-11	1	NextSeq
-LI-VAL-12	1	NextSeq
-LI-VAL-13	1	NextSeq
+LI-VAL-10	0.7	NextSeq
+LI-VAL-11	0.3	NextSeq
+LI-VAL-12	0.7	NextSeq
+LI-VAL-13	0.8	NextSeq
 LI-VAL-14	1	NextSeq
 LI-VAL-15	1	NextSeq
 LI-VAL-16	1	NextSeq
