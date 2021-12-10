@@ -82,9 +82,8 @@ clean:
 #snakemake --cores 1 --delete-all-output --verbose Twist_DNA.smk
 
 ## archive: Move to larger storage location and create a symbolic link to it
-archive:
-	mv $(RESULTS_DIR) $(STORAGE) && \
-	ln -s $(STORAGE)$(RESULTS_DIR) $$PWD
+archive: report collect
+	mv $(RESULTS_DIR) $(STORAGE)
 
 ## help: Show this message
 help:
