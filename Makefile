@@ -57,7 +57,7 @@ run:
 
 ## config: Make the main config file (usually run before running the main pipeline)
 config:
-	@($(CONDA_ACTIVATE) ; \
+	@($(CONDA_ACTIVATE)
 	snakemake -p -j 1 -s /home/lauri/Desktop/Twist_DNA/src/Snakemake/rules/Twist_DNA_yaml/Twist_DNA_yaml.smk $(ARGS))
 
 ## pull_default_sif: Pull the default singularity image
@@ -66,12 +66,12 @@ pull_default_sif:
 
 ## report: Make snakemake report
 report:
-	@($(CONDA_ACTIVATE); \
+	@($(CONDA_ACTIVATE)
 	snakemake -j 1 --report $(REPORT) -s ./Twist_DNA.smk)
 
 ## collect: Collect all results from the last run into own directory
 collect:
-	mkdir -p $(RESULTS_DIR) ; \
+	mkdir -p $(RESULTS_DIR)
 	mv $(RESULTS) $(RESULTS_DIR)
 
 ## clean: Remove all the latest results
