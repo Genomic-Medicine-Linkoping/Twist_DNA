@@ -45,7 +45,7 @@ RESULTS = alignment \
 
 RESULTS_DIR = results
 
-STORAGE = /data/CGL/Twist_DNA/
+STORAGE = /data/Twist_DNA/results
 
 MAIN_SMK = /home/lauri/Desktop/Twist_DNA/Twist_DNA.smk
 
