@@ -94,7 +94,7 @@ singularity:
 cartool:
     cov: "100 200 1000"
 runfolder_path: home/lauri/Desktop/Twist_DNA
-samplesheet: /data/bcl2fastq/input/211203_NB501689_0228_AHV3GFBGXK/SampleSheet.csv
+samplesheet: SampleSheet.csv
 bcl2fastq_version: 2.17.1.14
 
 
