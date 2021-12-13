@@ -13,7 +13,8 @@ CONDA_ACTIVATE = source $$(conda info --base)/etc/profile.d/conda.sh ; conda act
 CPUS = 90
 ARGS = --forceall
 
-.PHONY: run \
+.PHONY: \
+run \
 config \
 pull_default_sif \
 clean \
@@ -24,24 +25,25 @@ help
 
 REPORT = report.html
 
-RESULTS = alignment \
-	Bam \
-	benchmarks \
-	CNV \
-	DATA/gene_depth_*-ready.txt \
-	DATA/background_run.tsv \
-	genefuse.json \
-	fastq \
-	freebayes \
-	logs \
-	MSI \
-	mutect2 \
-	qc \
-	recall \
-	Results \
-	vardict \
-	varscan \
-	$(REPORT)
+RESULTS = \
+alignment \
+Bam \
+benchmarks \
+CNV \
+DATA/gene_depth_*-ready.txt \
+DATA/background_run.tsv \
+genefuse.json \
+fastq \
+freebayes \
+logs \
+MSI \
+mutect2 \
+qc \
+recall \
+Results \
+vardict \
+varscan \
+$(REPORT)
 
 SAMPLE_DATA = \
 samples.tsv \
