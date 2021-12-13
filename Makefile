@@ -48,6 +48,8 @@ samples.tsv \
 SampleSheet.csv \
 units.tsv
 
+# In this directory is gathered all results when you run command make archive
+RESULTS_DIR = LI_VAL_17-24
 
 STORAGE = /data/Twist_DNA/results
 
