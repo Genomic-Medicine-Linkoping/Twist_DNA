@@ -75,8 +75,8 @@ report:
 	@($(CONDA_ACTIVATE)
 	snakemake -j 1 --report $(REPORT) -s ./Twist_DNA.smk)
 
-## collect: Collect all results from the last run into own directory
-collect:
+## collection: Collect all results from the last run into own directory
+collection:
 	mkdir -p $(RESULTS_DIR)
 	mv $(RESULTS) $(RESULTS_DIR)
 	cp $(SAMPLE_DATA) $(RESULTS_DIR)
@@ -89,7 +89,7 @@ clean:
 #snakemake --cores 1 --delete-all-output --verbose Twist_DNA.smk
 
 ## archive: Move to larger storage location and create a symbolic link to it
-archive: report collect
+archive: report collection
 	mv $(RESULTS_DIR) $(STORAGE)
 
 ## help: Show this message
