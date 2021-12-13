@@ -18,7 +18,7 @@ config \
 pull_default_sif \
 clean \
 report \
-collect \
+collection \
 archive \
 help
 
@@ -43,7 +43,11 @@ RESULTS = alignment \
 	varscan \
 	$(REPORT)
 
-RESULTS_DIR = results
+SAMPLE_DATA = \
+samples.tsv \
+SampleSheet.csv \
+units.tsv
+
 
 STORAGE = /data/Twist_DNA/results
 
@@ -73,6 +77,7 @@ report:
 collect:
 	mkdir -p $(RESULTS_DIR)
 	mv $(RESULTS) $(RESULTS_DIR)
+	cp $(SAMPLE_DATA) $(RESULTS_DIR)
 
 ## clean: Remove all the latest results
 clean:
