@@ -10,7 +10,7 @@ CURRENT_CONDA_ENV_NAME = Twist_DNA
 # Note that the extra activate is needed to ensure that the activate floats env to the front of PATH
 CONDA_ACTIVATE = source $$(conda info --base)/etc/profile.d/conda.sh ; conda activate ; conda activate $(CURRENT_CONDA_ENV_NAME)
 
-CPUS = 90
+CPUS = 92
 ARGS = --forceall
 
 .PHONY: \
@@ -43,7 +43,7 @@ recall \
 Results \
 vardict \
 varscan \
-$(REPORT)
+#$(REPORT)
 
 SAMPLE_DATA = \
 samples.tsv \
@@ -51,7 +51,7 @@ SampleSheet.csv \
 units.tsv
 
 # In this directory is gathered all results when you run command make archive
-RESULTS_DIR = LI_VAL_17-24
+RESULTS_DIR = BC_9-16
 
 STORAGE = /data/Twist_DNA/results
 
